@@ -1,4 +1,5 @@
-# React + Vite
+# Oribi E-Commerce Fronted
+Netlify Live Link: https://oribi-fdr-2304.netlify.app/
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
