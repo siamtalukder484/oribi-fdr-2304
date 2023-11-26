@@ -6,13 +6,16 @@ import { IoMdCart } from "react-icons/io";
 import { FaCaretDown } from "react-icons/fa";
 import Cart from '../Cart';
 import UserCart from '../UserCart';
+import CategoryCard from './CategoryCard';
 
 
 const SearchBar = () => {
 let [showCart, setShowCart] = useState(false)
 let [showUserCart, setShowUserCart] = useState(false)
+let [showCategory, setShowCategory] = useState(false)
 let cartref = useRef()
 let userCartRef = useRef()
+let categoryref = useRef()
 
 useEffect(()=>{
   document.body.addEventListener("click",(e)=>{
@@ -28,6 +31,13 @@ useEffect(()=>{
       setShowUserCart(false)
     }
 
+    if(categoryref.current.contains(e.target)){
+      setShowCategory(true)
+    }else{
+      setShowCategory(false)
+    }
+
+
   })
 },[])
 
@@ -36,10 +46,15 @@ useEffect(()=>{
   return (
     <div className='bg-[#F5F5F3] py-[25px]'>
       <div className='max-w-container mx-auto'>
-          <div className='flex justify-between'>
-            <div className='flex items-center gap-x-[10px] cursor-pointer'>
-                <FaBars />
-                <span className='font-dm text-[14px] capitalize font-normal'>shop by category</span>
+          <div className='flex justify-between items-center'>
+            <div ref={categoryref} className='relative'>
+                <div onClick={()=>setShowCategory(!showCategory)} className='flex items-center gap-x-[10px] cursor-pointer'>
+                  <FaBars />
+                  <span className='font-dm text-[14px] capitalize font-normal'>shop by category</span>
+                </div>
+                {showCategory &&
+                  <CategoryCard/>
+                }
             </div>
             <div className='w-[600px] relative'>
               <search>
