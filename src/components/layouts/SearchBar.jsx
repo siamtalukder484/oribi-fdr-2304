@@ -6,7 +6,7 @@ import { IoMdCart } from "react-icons/io";
 import { FaCaretDown } from "react-icons/fa";
 import Cart from '../Cart';
 import UserCart from '../UserCart';
-import CategoryCard from './CategoryCard';
+import CategoryCard from '../CategoryCard';
 
 
 const SearchBar = () => {

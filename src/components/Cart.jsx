@@ -1,8 +1,12 @@
 import React from 'react'
 import { RxCross2 } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 
 
 const Cart = () => {
+
+    
+
   return (
     <div className='absolute right-0 mt-4 w-[360px] border-[1px] border-[#c3c1c1]'>
         <div className='p-5 bg-[#F5F5F3] flex flex-col gap-y-4'>
@@ -38,8 +42,12 @@ const Cart = () => {
         <div className='bg-white px-5 pt-[14px] pb-5'>
             <h4 className='font-dm text-base leading-[23px] font-normal'>Subtotal: <span className='text-[#262626] font-bold'>$44.00</span></h4>
             <div className='mt-[13px] flex justify-between'>
-                <a className='inline-block border-[1px] border-[#2B2B2B] py-4 px-10 text-black text-[14px] font-dm font-bold capitalize transition-all duration-300 hover:bg-black hover:text-white' href='#'>view cart</a>
-                <a className='inline-block border-[1px] border-[#2B2B2B] py-4 px-10 text-black text-[14px] font-dm font-bold capitalize transition-all duration-300 hover:bg-black hover:text-white' href='#'>checkout</a>
+                <Link className='inline-block border-[1px] border-[#2B2B2B] py-4 px-10 text-black text-[14px] font-dm font-bold capitalize transition-all duration-300 hover:bg-black hover:text-white' to="/cart">
+                    view cart
+                </Link>
+                <Link className='inline-block border-[1px] border-[#2B2B2B] py-4 px-10 text-black text-[14px] font-dm font-bold capitalize transition-all duration-300 hover:bg-black hover:text-white' to="/checkout"> 
+                    checkout
+                </Link>
             </div>
         </div>
     </div>
