@@ -1,6 +1,6 @@
 import React from 'react'
-import List from '../utilities/List'
-import ListItem from '../utilities/ListItem'
+import List from './utilities/List'
+import ListItem from './utilities/ListItem'
 
 const CategoryCard = () => {
   return (

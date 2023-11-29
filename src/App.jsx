@@ -12,6 +12,8 @@ import Shop from './pages/shop/Index';
 import About from './pages/about/Index';
 import Contacts from './pages/contacts/Index';
 import Journal from './pages/journal/Index';
+import CartPage from './pages/cart/Index';
+import CheckoutPage from './pages/checkout/Index';
 
 
 function App() {
@@ -25,6 +27,9 @@ function App() {
         <Route path='/about' element={<About/>}/>
         <Route path='/contacts' element={<Contacts/>}/>
         <Route path='/journal' element={<Journal/>}/>
+        <Route path='/cart' element={<CartPage/>}/>
+        <Route path='/checkout' element={<CheckoutPage/>}/>
+
         <Route path='*' element={<Error/>}/> 
       </Route>
       </>
