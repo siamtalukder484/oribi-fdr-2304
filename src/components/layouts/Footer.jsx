@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Image from '../utilities/Image'
 import FooterLogo from '../../assets/images/logo.png'
+import { FaFacebookF } from "react-icons/fa";
+
 
 const Footer = () => {
 
@@ -115,6 +117,22 @@ let helparr = [
                   </Link>
                 </div>
             </div>
+        </div>
+        <div className='flex justify-between items-center mt-[65px]'>
+          <div className='flex items-center gap-x-[25px]'>
+            <Link to="#">
+              <FaFacebookF className='text-[#262626]'/>
+            </Link>
+            <Link to="#">
+              <FaFacebookF className='text-[#262626]'/>
+            </Link>
+            <Link to="#">
+              <FaFacebookF className='text-[#262626]'/>
+            </Link>
+          </div>
+          <div>
+            <span className='text-right font-dm font-normal text-sm text-[#6D6D6D] capitalize'>2023 Orebi Minimal eCommerce Figma Template by FDR 2304</span>
+          </div>
         </div>
       </div>
     </footer>
