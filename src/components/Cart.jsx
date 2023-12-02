@@ -52,7 +52,7 @@ const Cart = () => {
   return (
     <>
         <ToastContainer />
-        <div className='absolute right-0 mt-4 w-[360px] border-[1px] border-[#c3c1c1]'>
+        <div className='absolute right-0 mt-4 w-[360px] border-[1px] border-[#c3c1c1] z-30'>
             <div className='p-5 bg-[#F5F5F3] flex flex-col gap-y-4'>
                 {
                     cartInfo.map((item, index)=>(

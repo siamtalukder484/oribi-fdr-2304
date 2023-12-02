@@ -43,7 +43,6 @@ const Banner = () => {
                     width: "30px",
                     borderRight: "3px solid black",
                     color: "#262626",
-                    
                 }
                 :{
                     color: "transparent",
