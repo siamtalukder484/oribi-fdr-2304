@@ -46,8 +46,51 @@ const CheckoutPage = () => {
       setTotal(total)
     }
   },[])
- 
- 
+
+  let [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    companyName: "",
+  })
+
+  let [error, setError] = useState({
+    firstName: "",
+    lastName: "",
+    countryName: ""
+  })
+
+  let handleForm = (e) => {
+    let {name,value} = e.target
+    setFormData({...formData, [name]:value});
+    if(name == firstName){
+      setError({...error, firstName: ""})
+    }
+    if(name == lastName){
+      setError({...error, lastName: ""})
+    }
+  }
+
+  
+  let handleSubmit =()=> {
+    if(!formData.firstName){
+      setError({...error,firstName: "Please Enter your first name"})
+    }else{
+      setError({firstName: ""})
+    }
+
+    if(!formData.lastName){
+      setError({...error,lastName: "Please Enter your Last name"})
+    }else{
+      setError({lastName: ""})
+    }
+
+    if(!formData.companyName){
+      setError({...error,companyName: "Please Enter your Company name"})
+    }else{
+      setError({companyName: ""})
+    }
+    console.log(error);
+ }
 
   return (
     <section className="pt-[124px] pb-[140px]">
@@ -99,6 +142,9 @@ const CheckoutPage = () => {
           <h3 className="mt-[120px] text-[39px] font-bold font-dm">
             Billing Details
           </h3>
+          <button onClick={handleSubmit} className="py-4 text-base text-white bg-black px-11">
+                Process to checkout
+              </button>
           <div className="mt-[42px] w-[1056px]">
             <div className="flex items-center gap-10">
               <div className="w-1/2">
@@ -110,7 +156,13 @@ const CheckoutPage = () => {
                   placeholder="First Name"
                   type="text"
                   name="firstName"
+                  onChange={handleForm}
                 />
+                <span className="font-dm font-[14px] text-[red]">
+                  {
+                    error.firstName
+                  }
+                </span>
               </div>
               <div className="w-1/2">
                 <label className="text-base leading-[23px] text-[#262626] font-dm font-bold ">
@@ -121,9 +173,10 @@ const CheckoutPage = () => {
                   placeholder="Last Name"
                   type="text"
                   name="lastName"
+                  onChange={handleForm}
                 />
                 <span className="font-dm font-[14px] text-[red]">
-                  Enter your Last Name
+                  {error.lastName}
                 </span>
               </div>
             </div>
@@ -136,7 +189,11 @@ const CheckoutPage = () => {
                 placeholder="Company Name"
                 type="text"
                 name="companyName"
+                onChange={handleForm}
               />
+               <span className="font-dm font-[14px] text-[red]">
+                  {error.companyName}
+                </span>
             </div>
             <div className="w-full mt-6">
               <label className="text-base leading-[23px] text-[#262626] font-dm font-bold ">
@@ -285,9 +342,7 @@ const CheckoutPage = () => {
             </table>
             <div className="mt-[60px] border border-[#F0F0F0] py-[30px] px-[34px]">
               <h3>Bank</h3>
-              <button className="py-4 text-base text-white bg-black px-11">
-                Process to checkout
-              </button>
+              
             </div>
           </div>
         </div>
