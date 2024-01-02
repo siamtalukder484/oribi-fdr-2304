@@ -22,6 +22,8 @@ import Address from './pages/myAccount/Address';
 import AccountDetails from './pages/myAccount/AccountDetails';
 import MarchantDashboard from './pages/marchantDashboard/Index';
 import MarchantHome from './pages/marchantDashboard/Home';
+import Login from './pages/login/Index';
+import SignUp from './pages/registration/Index';
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
         <Route path='/journal' element={<Journal/>}/>
         <Route path='/cart' element={<CartPage/>}/>
         <Route path='/checkout' element={<CheckoutPage/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
         <Route element={<MyAccountRoot/>}>
             <Route index path='/dashboard' element={<Dashboard/>}/>
             <Route path='/others' element={<Others/>}/>
