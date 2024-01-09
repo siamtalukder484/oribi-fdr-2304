@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import Banner from '../../components/home/Banner'
 import { useSelector, useDispatch } from "react-redux";
 import { increment,decrement } from '../../slices/counterSlice';
+import FreeShipping from '../../components/home/FreeShipping';
+import DiscountBanner from '../../components/home/DiscountBanner';
+import NewArrible from '../../components/home/NewArrible';
 
 
 const Home = () => {
@@ -26,6 +29,9 @@ let handelDecrement = () => {
   return (
     <>
       <Banner />
+      <FreeShipping/>
+      <DiscountBanner/>
+      <NewArrible/>
       <button onClick={handelIncrement}>Increment</button>
       <h1 className='text-[60px]'>{count}</h1>
       <button onClick={handelDecrement}>Decrement</button>
