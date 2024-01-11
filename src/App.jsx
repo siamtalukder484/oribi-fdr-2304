@@ -41,6 +41,7 @@ function App() {
         <Route path='/checkout' element={<CheckoutPage/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
+        {/* <Route path='/product' element={<SignUp/>}/> */}
         <Route element={<MyAccountRoot/>}>
             <Route index path='/dashboard' element={<Dashboard/>}/>
             <Route path='/others' element={<Others/>}/>
