@@ -12,6 +12,17 @@ const CheckoutPage = () => {
   let finalpath = patharray[patharray.length - 1]
 
   let [couponShow, setCouponShow] = useState(false)
+  let [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    companyName: "",
+  })
+
+  let [error, setError] = useState({
+    firstName: "",
+    lastName: "",
+    countryName: ""
+  })
 
   let checkoutproduct = [
     {
@@ -47,47 +58,31 @@ const CheckoutPage = () => {
     }
   },[])
 
-  let [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    companyName: "",
-  })
-
-  let [error, setError] = useState({
-    firstName: "",
-    lastName: "",
-    countryName: ""
-  })
+ 
 
   let handleForm = (e) => {
     let {name,value} = e.target
     setFormData({...formData, [name]:value});
-    if(name == firstName){
-      setError({...error, firstName: ""})
-    }
-    if(name == lastName){
-      setError({...error, lastName: ""})
-    }
+    // if(name == firstName){
+    //   setError({...error, firstName: ""})
+    // }
+    // if(name == lastName){
+    //   setError({...error, lastName: ""})
+    // }
   }
 
   
   let handleSubmit =()=> {
+    
     if(!formData.firstName){
+      console.log("aksdh")
       setError({...error,firstName: "Please Enter your first name"})
-    }else{
-      setError({firstName: ""})
     }
-
-    if(!formData.lastName){
+   if(!formData.lastName){
       setError({...error,lastName: "Please Enter your Last name"})
-    }else{
-      setError({lastName: ""})
     }
-
     if(!formData.companyName){
       setError({...error,companyName: "Please Enter your Company name"})
-    }else{
-      setError({companyName: ""})
     }
     console.log(error);
  }
