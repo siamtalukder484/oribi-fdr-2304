@@ -24,6 +24,7 @@ import MarchantDashboard from './pages/marchantDashboard/Index';
 import MarchantHome from './pages/marchantDashboard/Home';
 import Login from './pages/login/Index';
 import SignUp from './pages/registration/Index';
+import SingleProduct from './pages/product/SingleProduct';
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
         <Route path='/checkout' element={<CheckoutPage/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
-        {/* <Route path='/product' element={<SignUp/>}/> */}
+        <Route path='/product/:id' element={<SingleProduct/>}/>
         <Route element={<MyAccountRoot/>}>
             <Route index path='/dashboard' element={<Dashboard/>}/>
             <Route path='/others' element={<Others/>}/>
