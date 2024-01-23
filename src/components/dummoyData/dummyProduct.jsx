@@ -8,6 +8,7 @@ const newArrivalsProduct = [
         isnew: "false",
         discount: "false",
         color: "yellow",
+        stock: 150,
     },
     {
         id: 1,
@@ -17,6 +18,7 @@ const newArrivalsProduct = [
         isnew: "false",
         discount: "15",
         color: "red",
+        stock: 0,
     },
     {
         id: 2,
@@ -26,6 +28,7 @@ const newArrivalsProduct = [
         isnew: "true",
         discount: "false",
         color: "false",
+        stock: 12,
     },
     {
         id: 3,
@@ -35,6 +38,7 @@ const newArrivalsProduct = [
         isnew: "true",
         discount: "false",
         color: "white",
+        stock: 17,
     },
     {
         id: 4,
@@ -44,6 +48,7 @@ const newArrivalsProduct = [
         isnew: "false",
         discount: "20",
         color: "black",
+        stock: 52,
     },
     {
         id: 5,
@@ -53,6 +58,7 @@ const newArrivalsProduct = [
         isnew: "false",
         discount: "10",
         color: "red",
+        stock: 0,
     },
     
   ]
