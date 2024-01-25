@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Banner from '../../components/home/Banner'
 import { useSelector, useDispatch } from "react-redux";
 import { increment,decrement } from '../../slices/counterSlice';
+import { addtocard } from '../../slices/cartSlice';
 import FreeShipping from '../../components/home/FreeShipping';
 import DiscountBanner from '../../components/home/DiscountBanner';
 import NewArrible from '../../components/home/NewArrible';

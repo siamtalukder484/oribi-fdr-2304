@@ -4,33 +4,37 @@ import { Link } from 'react-router-dom';
 import Image from './utilities/Image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSelector, useDispatch } from "react-redux";
 
+// {
+        //     id: 0,
+        //     title: "i phone 15 pro",
+        //     price: "150000"
+        // },
+        // {
+        //     id: 1,
+        //     title: "Titan Watch",
+        //     price: "2250"
+        // },
+        // {
+        //     id: 2,
+        //     title: "Logitec Headphone",
+        //     price: "3300"
+        // },
+        // {
+        //     id: 3,
+        //     title: "HP Monitor",
+        //     price: "13500"
+        // },
 
 const Cart = () => {
+    const data = useSelector((state) => state);
+    let cartitemvalue = data.cartinfo && data.cartinfo.value
 
-    const [cartInfo, setCartInfo] = useState([
-        {
-            id: 0,
-            title: "i phone 15 pro",
-            price: "150000"
-        },
-        {
-            id: 1,
-            title: "Titan Watch",
-            price: "2250"
-        },
-        {
-            id: 2,
-            title: "Logitec Headphone",
-            price: "3300"
-        },
-        {
-            id: 3,
-            title: "HP Monitor",
-            price: "13500"
-        },
-    ])
+    const [cartInfo, setCartInfo] = useState(cartitemvalue)
 
+
+    console.log(cartitemvalue);
   
     let handleItemRemove = (item) => {
         let updatecart = cartInfo.filter((cartItem)=>
@@ -62,8 +66,8 @@ const Cart = () => {
                             </div>
                             <div className='flex justify-between items-center w-[220px]'>
                                 <div className='flex flex-col gap-y-3'>
-                                    <h4 className='font-dm font-bold text-[14px] text-[#262626] leading-normal capitalize'>{item.title}</h4>
-                                    <span className='font-dm font-bold text-[14px] text-[#262626] leading-normal'>${item.price}</span>
+                                    <h4 className='font-dm font-bold text-[14px] text-[#262626] leading-normal capitalize'>{item.productname}</h4>
+                                    <span className='font-dm font-bold text-[14px] text-[#262626] leading-normal'>${item.productprice}</span>
                                 </div>
                                 <div onClick={()=>handleItemRemove(item)} className='cursor-pointer'>
                                     <RxCross2 />

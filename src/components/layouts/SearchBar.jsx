@@ -7,7 +7,7 @@ import { FaCaretDown } from "react-icons/fa";
 import Cart from '../Cart';
 import UserCart from '../UserCart';
 import CategoryCard from '../CategoryCard';
-
+import { useSelector, useDispatch } from "react-redux";
 
 const SearchBar = () => {
 let [showCart, setShowCart] = useState(false)
@@ -16,6 +16,9 @@ let [showCategory, setShowCategory] = useState(false)
 let cartref = useRef()
 let userCartRef = useRef()
 let categoryref = useRef()
+const data = useSelector((state) => state);
+
+
 
 useEffect(()=>{
   document.body.addEventListener("click",(e)=>{
@@ -74,6 +77,11 @@ useEffect(()=>{
               </div>
               <div ref={cartref} className='relative'>
                 <IoMdCart onClick={()=>setShowCart(!showCart)} className='text-2xl text-[#262626] cursor-pointer'/>
+                <div className='absolute top-3 left-3 w-10 h-10 bg-red-500 rounded-full flex items-center justify-center'>
+                  <span className='text-white text-xl'>
+                    {data.cartinfo && data.cartinfo.value.length}
+                  </span>
+                </div>
                 {showCart &&
                   <Cart />
                 }

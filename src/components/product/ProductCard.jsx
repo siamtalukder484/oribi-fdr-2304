@@ -4,26 +4,34 @@ import { FaHeart } from "react-icons/fa";
 import { LuRefreshCcw } from "react-icons/lu";
 import { FaCartShopping } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { addtocard } from '../../slices/cartSlice';
+import { ToastContainer, toast } from 'react-toastify';
 
 
-
-const ProductCard = ({productprice,productname,productimage,isnew,discount,color,id}) => {
-
-
+const ProductCard = ({productprice,productname,productimage,isnew,discount,color,id,allinfo}) => {
+    const dispatch = useDispatch();
+    const data = useSelector((state) => state);
+    console.log(data.cartinfo.value.length);
     let [newProduct, setNewProduct] = useState(false)
 
     useEffect(()=>{
         if(isnew == "true"){
             setNewProduct(true)
-            console.log("ami true");
         }else{
             setNewProduct(false)
-            console.log("ami false");
         }
     },[isnew])
 
+    let handleCartAdd = (singleproductinfo) => {
+        // console.log(singleproductinfo);
+        dispatch(addtocard(singleproductinfo))
+        toast("Add to cart successfully")
+    }
+
   return (
     <div>
+        <ToastContainer/>
         <div className='group h-[370px] bg-red-300 relative overflow-hidden shadow-lg'>
             <Link to={`/product/${id}`}>
                 <Image className="w-full h-full object-cover" source={productimage} alt="img"/>
@@ -50,7 +58,7 @@ const ProductCard = ({productprice,productname,productimage,isnew,discount,color
                         <span className='font-dm text-[#767676] group-hover:text-[#262626] text-base font-normal leading-normal capitalize'>compare</span>
                         <LuRefreshCcw  />
                     </li>
-                    <li className='group inline-flex items-center justify-end gap-x-4 cursor-pointer'>
+                    <li onClick={()=>handleCartAdd(allinfo)} className='group inline-flex items-center justify-end gap-x-4 cursor-pointer'>
                         <span className='font-dm text-[#767676] group-hover:text-[#262626] text-base font-normal leading-normal capitalize'>add to cart</span>
                         <FaCartShopping />
                     </li>

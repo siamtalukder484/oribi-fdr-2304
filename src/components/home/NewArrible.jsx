@@ -30,8 +30,8 @@ const NewArrible = () => {
               > 
                 {dummyProducts.map((item,index)=>(
                   <SwiperSlide key={index}>
-                    <ProductCard key={index} productprice={item.productprice} productname={item.productname} productimage={item.productimage} isnew={item.isnew} discount={item.discount} color={item.color} id={item.id}/>
-                </SwiperSlide>
+                    <ProductCard key={index} allinfo={item} productprice={item.productprice} productname={item.productname} productimage={item.productimage} isnew={item.isnew} discount={item.discount} color={item.color} id={item.id}/>
+                  </SwiperSlide>
                 ))
                 }
                 
