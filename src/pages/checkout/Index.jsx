@@ -51,6 +51,7 @@ const CheckoutPage = () => {
     }
   ]
   let [total, setTotal] = useState(0);
+  
   useEffect(()=>{
     for(let i=0; i<checkoutproduct.length ;i++){
       total += checkoutproduct[i].price * checkoutproduct[i].quantity
