@@ -5,6 +5,7 @@ import Image from './utilities/Image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector, useDispatch } from "react-redux";
+import { addtocard } from '../slices/cartSlice';
 
 // {
         //     id: 0,
@@ -28,42 +29,29 @@ import { useSelector, useDispatch } from "react-redux";
         // },
 
 const Cart = () => {
-    const data = useSelector((state) => state);
-    let cartitemvalue = data.cartinfo && data.cartinfo.value
+  const data = useSelector((state) => state);
+  let cartitemvalue = data.cartinfo && data.cartinfo.value;
+  const [cartInfo, setCartInfo] = useState(cartitemvalue);
+  let [totalprice, setTotalprice] = useState(0);
+  let dispatch = useDispatch()
 
-    const [cartInfo, setCartInfo] = useState(cartitemvalue)
-
-
-    console.log(cartitemvalue);
-  
-      let [totalprice, setTotalprice] = useState(0);
-
-      useEffect(() => {
-        for (let i = 0; i < cartInfo.length; i++) {
-          totalprice += parseInt(cartInfo[i].productprice);
-          setTotalprice(totalprice);
-        }
-        console.log(totalprice)
-      }, [cartInfo]);
-    
-    let handleItemRemove = (id) => {
-        console.log("product id",id);
-        console.log(cartInfo);
-        // let updatecart = cartInfo.filter((cartItem)=>
-        //     cartItem.id !== item.id
-        // )
-        // setCartInfo(updatecart)
+  useEffect(() => {
+    for (let i = 0; i < cartInfo.length; i++) {
+      totalprice += parseInt(cartInfo[i].productprice);
+      setTotalprice(totalprice);
     }
-    // toast('Cart Item Removed', {
-    //     position: "bottom-right",
-    //     autoClose: 2000,
-    //     hideProgressBar: false,
-    //     closeOnClick: true,
-    //     pauseOnHover: true,
-    //     draggable: true,
-    //     progress: undefined,
-    //     theme: "dark",
-    //     });
+  }, [cartInfo]);
+
+
+let [xyz, setxyz] = useState()
+
+let handleItemRemove = (item,index) => {
+  let a = cartInfo.splice(index,1)
+  // console.log("product id",item.id);
+  // console.log("product position",index);
+  console.log(a); 
+};
+  
 
   return (
     <>
@@ -89,7 +77,7 @@ const Cart = () => {
                   </span>
                 </div>
                 <div
-                  onClick={() => handleItemRemove(item.id)}
+                  onClick={() => handleItemRemove(item,index)}
                   className="cursor-pointer"
                 >
                   <RxCross2 />
