@@ -5,51 +5,36 @@ import Image from './utilities/Image';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector, useDispatch } from "react-redux";
-import { addtocard } from '../slices/cartSlice';
+import { addtocard,deleteItem } from '../slices/cartSlice';
 
-// {
-        //     id: 0,
-        //     title: "i phone 15 pro",
-        //     price: "150000"
-        // },
-        // {
-        //     id: 1,
-        //     title: "Titan Watch",
-        //     price: "2250"
-        // },
-        // {
-        //     id: 2,
-        //     title: "Logitec Headphone",
-        //     price: "3300"
-        // },
-        // {
-        //     id: 3,
-        //     title: "HP Monitor",
-        //     price: "13500"
-        // },
 
 const Cart = () => {
   const data = useSelector((state) => state);
   let cartitemvalue = data.cartinfo && data.cartinfo.value;
-  const [cartInfo, setCartInfo] = useState(cartitemvalue);
+  // const [cartInfo, setCartInfo] = useState(cartitemvalue);
   let [totalprice, setTotalprice] = useState(0);
   let dispatch = useDispatch()
 
   useEffect(() => {
-    for (let i = 0; i < cartInfo.length; i++) {
-      totalprice += parseInt(cartInfo[i].productprice);
+    // totalprice = 0
+    for (let i = 0; i < cartitemvalue.length; i++) {
+      totalprice += parseInt(cartitemvalue[i].productprice);
       setTotalprice(totalprice);
     }
-  }, [cartInfo]);
+  }, [cartitemvalue]);
 
 
 let [xyz, setxyz] = useState()
 
 let handleItemRemove = (item,index) => {
-  let a = cartInfo.splice(index,1)
-  // console.log("product id",item.id);
+  // console.log("product id",item);
   // console.log("product position",index);
-  console.log(a); 
+  // let newcart = cartitemvalue.splice(index,1)
+  // console.log(newcart);
+  // let newcart = cartitemvalue.filter((v)=> v.id !== item.id)
+  // dispatch(addtocard(newcart));
+  // console.log(item);
+  dispatch(deleteItem(item.id))
 };
   
 
@@ -58,7 +43,7 @@ let handleItemRemove = (item,index) => {
       <ToastContainer />
       <div className="absolute right-0 mt-4 w-[360px] border-[1px] border-[#c3c1c1] z-30">
         <div className="p-5 bg-[#F5F5F3] flex flex-col gap-y-4">
-          {cartInfo.map((item, index) => (
+          {cartitemvalue.map((item, index) => (
             <div key={index} className="flex gap-x-5">
               <div className="w-20 h-20 overflow-hidden bg-red-400">
                 <Image

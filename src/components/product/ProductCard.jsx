@@ -31,7 +31,6 @@ const ProductCard = ({productprice,productname,productimage,isnew,discount,color
 
   return (
     <div>
-        <ToastContainer/>
         <div className='group h-[370px] bg-red-300 relative overflow-hidden shadow-lg'>
             <Link to={`/product/${id}`}>
                 <Image className="object-cover w-full h-full" source={productimage} alt="img"/>
