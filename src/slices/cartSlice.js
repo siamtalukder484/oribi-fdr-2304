@@ -13,8 +13,12 @@ export const cartSlice = createSlice({
       const itemIdToDelete = action.payload;
       state.value = state.value.filter(item => item.id !== itemIdToDelete);
     },
+    quantityUpdate(state, action){
+      const index = action.payload
+      console.log(index.id);
+    }
   },
 });
-export const { addtocard,deleteItem } = cartSlice.actions;
+export const { addtocard,deleteItem,quantityUpdate } = cartSlice.actions;
 
 export default cartSlice.reducer;

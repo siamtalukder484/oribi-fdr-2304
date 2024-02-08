@@ -2,50 +2,19 @@ import React, { useState } from 'react'
 import BreadCrumb from '../../components/utilities/BreadCrumb'
 import { RxCross2 } from "react-icons/rx";
 import { useEffect } from 'react';
-
+import { useSelector, useDispatch } from "react-redux";
+import { quantityUpdate } from "../../slices/cartSlice";
 
 const CartPage = () => {
 
 let pathname =  window.location.href
 let patharray = pathname.split("/")
 let finalpath = patharray[patharray.length - 1]
-
-let [cartInfo, setCartInfo] = useState([
-  {
-    id: 0,
-    image: "image hobea ekhane",
-    productName: 'watch',
-    price: 125,
-    quan: 2,
-    total: 250,
-  },
-  {
-    id: 1,
-    image: "image hobea ekhane",
-    productName: 'murgi',
-    price: 170,
-    quan: 1,
-    total: 170,
-  },
-  {
-    id: 2,
-    image: "image hobea ekhane",
-    productName: 'green apple',
-    price: 320,
-    quan: 5,
-    total: 1600,
-  },
-  {
-    id: 3,
-    image: "image hobea ekhane",
-    productName: 'orange',
-    price: 280,
-    quan: 2,
-    total: 560,
-  },
-])
-
-
+  
+const dispatch = useDispatch();
+  const data = useSelector((state) => state);
+  let cartitemvalue = data.cartinfo && data.cartinfo.value;
+let [cartInfo, setCartInfo] = useState(cartitemvalue)
 let [quantity, setQuantity] = useState("")
 let [cursor, setCoursor] = useState(true)
 
@@ -57,9 +26,13 @@ let [cursor, setCoursor] = useState(true)
   };
 
   let increment = (index) => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-    updateQuantity(index, cartInfo[index].quan + 1);
+    // console.log(index);
+    dispatch(quantityUpdate(cartitemvalue[index]))
+    // console.log(cartitemvalue[index].quantity);
+    // setQuantity((prevQuantity) => prevQuantity + 1);
+    // updateQuantity(index, cartInfo[index].quan + 1);
   }
+
   let decrement = (index) => {
     if (cartInfo[index].quan > 1) {
       updateQuantity(index, cartInfo[index].quan - 1);
@@ -128,15 +101,15 @@ useEffect(() => {
                     <RxCross2 />
                   </div>
                   <div className="h-[100px] w-[100px] bg-red-500 ml-10">
-                    <img src={item.image} alt="img"/>
+                    <img src={item.productimage} alt="img"/>
                   </div>
                   <h5 className="ml-5 text-[#262626] text-base font-bold leading-[23px] capitalize">
-                    {item.productName}
+                    {item.productname}
                   </h5>
                 </div>
                 <div className="px-5 w-[400px]">
                   <h5 className="text-[#262626] text-xl font-dm leading-normal font-bold">
-                    ${item.price}
+                    ${item.productprice}
                   </h5>
                 </div>
                 <div className="px-5 w-[400px]">
@@ -150,10 +123,10 @@ useEffect(() => {
                       -
                     </button>
                     <span className="font-dm text-base text-[#767676] leading-[30px] font-normal">
-                      {item.quan}
+                      {item.quantity}
                     </span>
                     <button
-                     onClick={() => increment(index)}
+                     onClick={() => increment(index,item.quantity)}
                       className="font-dm text-base text-[#767676] leading-[30px] font-normal"
                     >
                       +
@@ -162,7 +135,7 @@ useEffect(() => {
                 </div>
                 <div className="px-5 w-[400px]">
                   <h5 className="text-[#262626] text-xl font-dm leading-normal font-bold">
-                    ${item.total}
+                    ${item.productprice * item.quantity}
                   </h5>
                 </div>
               </div>

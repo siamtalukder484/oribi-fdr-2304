@@ -24,8 +24,11 @@ const ProductCard = ({productprice,productname,productimage,isnew,discount,color
     },[isnew])
 
     let handleCartAdd = (singleproductinfo) => {
-        // console.log(singleproductinfo);
-        dispatch(addtocard(singleproductinfo))
+        let newsingleproduct = {
+            ...singleproductinfo,
+            quantity: 1,
+        }
+        dispatch(addtocard(newsingleproduct))
         toast("Add to cart successfully")
     }
 
