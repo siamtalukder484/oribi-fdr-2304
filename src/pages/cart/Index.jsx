@@ -3,7 +3,7 @@ import BreadCrumb from '../../components/utilities/BreadCrumb'
 import { RxCross2 } from "react-icons/rx";
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { quantityUpdate } from "../../slices/cartSlice";
+import { quantityIncrement,quantityDecrement } from "../../slices/cartSlice";
 
 const CartPage = () => {
 
@@ -15,8 +15,11 @@ const dispatch = useDispatch();
   const data = useSelector((state) => state);
   let cartitemvalue = data.cartinfo && data.cartinfo.value;
 let [cartInfo, setCartInfo] = useState(cartitemvalue)
+
 let [quantity, setQuantity] = useState("")
 let [cursor, setCoursor] = useState(true)
+
+console.log(cartitemvalue);
 
   let updateQuantity = (index, newQuantity) => {
     let updatedCart = [...cartInfo];
@@ -25,19 +28,17 @@ let [cursor, setCoursor] = useState(true)
     setCartInfo(updatedCart);
   };
 
-  let increment = (index) => {
-    // console.log(index);
-    dispatch(quantityUpdate(cartitemvalue[index]))
-    // console.log(cartitemvalue[index].quantity);
-    // setQuantity((prevQuantity) => prevQuantity + 1);
-    // updateQuantity(index, cartInfo[index].quan + 1);
-  }
+useEffect(()=>{
+  setCartInfo(cartitemvalue)
+},[cartitemvalue])
+
+let increment = (index) => {
+  dispatch(quantityIncrement(index))
+}
+
 
   let decrement = (index) => {
-    if (cartInfo[index].quan > 1) {
-      updateQuantity(index, cartInfo[index].quan - 1);
-      setQuantity((prevQuantity) => prevQuantity - 1);
-    }
+   dispatch(quantityDecrement(index))
   };
 
 
@@ -126,7 +127,7 @@ useEffect(() => {
                       {item.quantity}
                     </span>
                     <button
-                     onClick={() => increment(index,item.quantity)}
+                     onClick={() => increment(index)}
                       className="font-dm text-base text-[#767676] leading-[30px] font-normal"
                     >
                       +
