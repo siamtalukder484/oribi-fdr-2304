@@ -36,21 +36,10 @@ let increment = (index) => {
   dispatch(quantityIncrement(index))
 }
 
-
   let decrement = (index) => {
    dispatch(quantityDecrement(index))
   };
 
-
-
-
-
-// let decrement = () => {
-//   if(quantity > 1){
-//     quantity--;
-//     setQuantity(quantity);
-//   }
-// }
 
 useEffect(() => {
   if (quantity < 1) {
