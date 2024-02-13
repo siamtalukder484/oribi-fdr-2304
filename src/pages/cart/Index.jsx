@@ -16,17 +16,7 @@ const dispatch = useDispatch();
   let cartitemvalue = data.cartinfo && data.cartinfo.value;
 let [cartInfo, setCartInfo] = useState(cartitemvalue)
 
-let [quantity, setQuantity] = useState("")
-let [cursor, setCoursor] = useState(true)
 
-console.log(cartitemvalue);
-
-  let updateQuantity = (index, newQuantity) => {
-    let updatedCart = [...cartInfo];
-    updatedCart[index].quan = newQuantity;
-    updatedCart[index].total = updatedCart[index].price * newQuantity;
-    setCartInfo(updatedCart);
-  };
 
 useEffect(()=>{
   setCartInfo(cartitemvalue)
@@ -36,19 +26,9 @@ let increment = (index) => {
   dispatch(quantityIncrement(index))
 }
 
-  let decrement = (index) => {
-   dispatch(quantityDecrement(index))
-  };
-
-
-useEffect(() => {
-  if (quantity < 1) {
-    setCoursor(true)
-  }else{
-    setCoursor(false);
-  }
-}, [quantity]);
-
+let decrement = (index) => {
+  dispatch(quantityDecrement(index))
+};
 
 
   return (
@@ -106,9 +86,7 @@ useEffect(() => {
                   <div className="border border-[#F0F0F0] h-[36px] w-[140px] px-5 flex justify-between items-center">
                     <button
                       onClick={() => decrement(index)}
-                      className={`font-dm text-base text-[#767676] leading-[30px] font-normal ${
-                        cursor ? "cursor-pointer" : "cursor-not-allowed"
-                      }`}
+                      className={`font-dm text-base text-[#767676] leading-[30px] font-normal cursor-pointer`}
                     >
                       -
                     </button>

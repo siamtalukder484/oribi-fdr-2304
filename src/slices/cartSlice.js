@@ -12,6 +12,9 @@ export const cartSlice = createSlice({
     deleteItem(state, action) {
       const itemIdToDelete = action.payload;
       state.value = state.value.filter(item => item.id !== itemIdToDelete);
+      // state.value = state.value.filter((item)=>{
+      //   item.id !== itemIdToDelete
+      // })
     },
     quantityIncrement(state, action){
       const index = action.payload
@@ -23,6 +26,7 @@ export const cartSlice = createSlice({
         state.value[index].quantity -= 1
       }
     },
+
   },
 });
 export const { addtocard,deleteItem,quantityIncrement,quantityDecrement } = cartSlice.actions;
