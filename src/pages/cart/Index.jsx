@@ -10,6 +10,7 @@ const CartPage = () => {
 let pathname =  window.location.href
 let patharray = pathname.split("/")
 let finalpath = patharray[patharray.length - 1]
+console.log("yeah");
   
 const dispatch = useDispatch();
   const data = useSelector((state) => state);
