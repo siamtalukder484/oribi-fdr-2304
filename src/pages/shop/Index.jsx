@@ -3,6 +3,7 @@ import BreadCrumb from '../../components/utilities/BreadCrumb'
 import Pagination from '../../components/pagintion/Pagination'
 
 const Shop = () => {
+  console.log("hello");
   return (
     <>
         <div className='max-w-container mx-auto'>
