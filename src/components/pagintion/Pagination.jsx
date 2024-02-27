@@ -8,7 +8,7 @@ import ProductCard from '../product/ProductCard';
 
 function Items({ currentItems }) {
   return (
-    <div className='flex flex-wrap gap-x-[46px]'>
+    <div className='flex flex-wrap gap-x-[44px]'>
       {currentItems &&
         currentItems.map((item,index) => (
           <div className='w-[370px]'>
