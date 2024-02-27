@@ -11,6 +11,8 @@ const Shop = () => {
 
   let hanldeCategory1=()=>{
     setCata1(!cata1)
+
+    console.log(input);
     
     
   }
